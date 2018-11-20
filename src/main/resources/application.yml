@@ -1,0 +1,55 @@
+spring:
+  datasource:
+    driver-class-name: com.mysql.jdbc.Driver
+    username: root
+    password: 123456
+    url: jdbc:mysql://127.0.0.1:3306/we_chat_order?characterEncoding=utf-8&useSSL=false
+  jpa:
+    show-sql: true
+##全局配置：让返回前端为null的数据（字段或对象）被过滤掉
+  jackson:
+    default-property-inclusion: non_null
+##配置redis
+  redis:
+    host: 192.168.0.122
+    port: 6379
+    password: 123456
+server:
+  servlet:
+    context-path: /sell
+
+#logging:
+#配置日志的输出格式和内容以及输出日志文件的位置以及文件名,以及输出的日志级别，还可以指定特定类的输出日志级别
+#  pattern:
+#    console: "%d - %msg%n"
+#  #path: /var/log/tomcat
+#    file: /var/log/tomcat/order.log
+#    level:
+#      com.hxkj.LoggerTest: debug
+
+wechat:
+  #openAppId:
+  #openAppSecret:
+  mpAppId: wxfbe41fedc9850342
+  mpAppSecret: 03da1f4ea6665a156e75a163a6e319eb
+  mchId: 1497672752
+  mchKey: 69D4E4F432828ADC2C33AC5A34854775
+  keyPath: H:\微信支付API证书\apiclient_cert.p12
+  notifyUrl: http://binbin678.natapp1.cc/sell/pay/notify
+  templateId:
+    orderStatus: JyW7CSNHqaSSx-RLaYlSM6uPLWJIkKAIoMvo4fnpEXI
+
+url:
+  wechatMpAuthorize: http://binbin678.natapp1.cc
+  wechatOpenAuthorize: http://binbin678.natapp1.cc
+  sell: http://binbin678.natapp1.cc
+
+#设置某个包下的日志级别，这里给mapper设置trace级别方便查看sql
+logging:
+  level:
+    com.hxkj.wechatorders.dataobject.mapper: trace
+
+#配置mybatis 的mapper层的xml文件扫描路径
+mybatis:
+  mapper-locations: classpath:mapper/*.xml
+
